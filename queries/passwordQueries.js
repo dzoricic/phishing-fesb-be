@@ -10,7 +10,7 @@ const pool = new Pool({
 const getAll = (req, res) => {
     pool.query('SELECT * FROM passwords', (error, results) => {
         if (error) {
-            throw error
+            res.status(500).json({ message: "Internal error." })
         }
         res.status(200).json(results.rows)
     })
@@ -19,7 +19,7 @@ const getAll = (req, res) => {
 const getById = (req, res) => {
     pool.query('SELECT * FROM passwords WHERE id = $1', [req.params.id], (error, results) => {
         if (error) {
-            throw error
+            res.status(500).json({ message: "Internal error." })
         }
         if (results.rows.length > 0) {
             res.status(200).json(results.rows[0])
@@ -34,7 +34,7 @@ const getByEmail = (req, res) => {
 
     pool.query('SELECT * FROM passwords WHERE email = $1', [email], (error, results) => {
         if (error) {
-            throw error
+            res.status(500).json({ message: "Internal error." })
         }
         if (results.rows.length > 0) {
             res.status(200).json(results.rows[0])
@@ -51,7 +51,7 @@ const create = (req, res) => {
 
     pool.query('INSERT INTO passwords("email", "password", "createdat") VALUES ($1, $2, $3)', [email, password, time], (error, results) => {
         if (error) {
-            throw error
+            res.status(500).json({ message: "Internal error." })
         }
         res.status(202).json({ message: "Accepted." })
     })
@@ -60,7 +60,7 @@ const create = (req, res) => {
 const deleteById = (req, res) => {
     pool.query('DELETE FROM passwords WHERE id = $1', [req.params.id], (error, results) => {
         if (error) {
-            throw error
+            res.status(500).json({ message: "Internal error." })
         }
         res.status(200).json({ message: "Success." })
     })
@@ -71,7 +71,7 @@ const deleteByEmail = (req, res) => {
 
     pool.query('DELETE FROM passwords WHERE email = $1', [email], (error, results) => {
         if (error) {
-            throw error
+            res.status(500).json({ message: "Internal error." })
         }
         res.status(200).json({ message: "Success." })
     })
