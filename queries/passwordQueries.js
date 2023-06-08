@@ -11,8 +11,9 @@ const getAll = (req, res) => {
     pool.query('SELECT * FROM passwords', (error, results) => {
         if (error) {
             res.status(500).json({ message: "Internal error." })
+        } else {
+            res.status(200).json(results.rows)
         }
-        res.status(200).json(results.rows)
     })
 }
 
@@ -52,8 +53,9 @@ const create = (req, res) => {
     pool.query('INSERT INTO passwords("email", "password", "createdat") VALUES ($1, $2, $3)', [email, password, time], (error, results) => {
         if (error) {
             res.status(500).json({ message: "Internal error." })
+        } else {
+            res.status(202).json({ message: "Accepted." })
         }
-        res.status(202).json({ message: "Accepted." })
     })
 }
 
@@ -61,8 +63,9 @@ const deleteById = (req, res) => {
     pool.query('DELETE FROM passwords WHERE id = $1', [req.params.id], (error, results) => {
         if (error) {
             res.status(500).json({ message: "Internal error." })
+        } else {
+            res.status(200).json({ message: "Success." })
         }
-        res.status(200).json({ message: "Success." })
     })
 }
 
