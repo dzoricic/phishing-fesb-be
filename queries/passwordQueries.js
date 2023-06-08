@@ -3,10 +3,7 @@ const pool = new Pool({
     user: 'osxkqgrz',
     host: 'dumbo.db.elephantsql.com',
     database: 'osxkqgrz',
-    password: 'bl-oWWhCbK61gGnRjaILmCBQSJ4nxg6Y',
-    connectionTimeoutMillis : 5000,
-    idleTimeoutMillis : 30000,
-    query_timeout: 5000
+    password: 'bl-oWWhCbK61gGnRjaILmCBQSJ4nxg6Y'
 })
 
 const getAll = (req, res) => {
