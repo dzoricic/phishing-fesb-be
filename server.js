@@ -4,7 +4,11 @@ const passwordRoutes = require('./routes/passwordRoutes');
 
 const app = express();
 
-app.use(cors())
+app.use(cors({
+    methods: ["GET", "POST", "DELETE", "PUT"],
+    credentials: true,
+    origin: ["http://127.0.0.1:5173, https://main--astounding-fudge-3b161b.netlify.app/"]
+}))
 
 app.use(express.json());
 
