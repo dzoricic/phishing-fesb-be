@@ -7,7 +7,7 @@ const app = express();
 app.use(cors({
     methods: ["GET", "POST", "DELETE", "PUT"],
     credentials: true,
-    origin: ["http://127.0.0.1:5173", "https://main--astounding-fudge-3b161b.netlify.app/"]
+    origin: ["http://localhost:5173", "https://main--astounding-fudge-3b161b.netlify.app/"]
 }))
 
 app.use(express.json());
