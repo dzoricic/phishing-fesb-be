@@ -3,7 +3,8 @@ const pool = new Pool({
     user: 'osxkqgrz',
     host: 'dumbo.db.elephantsql.com',
     database: 'osxkqgrz',
-    password: 'bl-oWWhCbK61gGnRjaILmCBQSJ4nxg6Y'
+    password: 'bl-oWWhCbK61gGnRjaILmCBQSJ4nxg6Y',
+    ssl: { rejectUnauthorized: false }
 })
 
 const getAll = (req, res) => {
