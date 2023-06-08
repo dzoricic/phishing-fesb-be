@@ -24,7 +24,7 @@ const getById = (req, res) => {
         if (results.rows.length > 0) {
             res.status(200).json(results.rows[0])
         } else {
-            res.status(404)
+            res.status(404).json({ message: "Not found." })
         }
     })
 }
@@ -39,7 +39,7 @@ const getByEmail = (req, res) => {
         if (results.rows.length > 0) {
             res.status(200).json(results.rows[0])
         } else {
-            res.status(404)
+            res.status(404).json({ message: "Not found." })
         }
     })
 }
@@ -53,7 +53,7 @@ const create = (req, res) => {
         if (error) {
             throw error
         }
-        res.status(200)
+        res.status(202).json({ message: "Accepted." })
     })
 }
 
@@ -62,7 +62,7 @@ const deleteById = (req, res) => {
         if (error) {
             throw error
         }
-        res.status(200)
+        res.status(200).json({ message: "Success." })
     })
 }
 
@@ -73,7 +73,7 @@ const deleteByEmail = (req, res) => {
         if (error) {
             throw error
         }
-        res.status(200)
+        res.status(200).json({ message: "Success." })
     })
 }
 
